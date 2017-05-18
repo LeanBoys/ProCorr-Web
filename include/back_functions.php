@@ -159,7 +159,8 @@ if (isset($_POST['mottapass']) and $_POST['mottapass'] == "Motta passord") {
 
 					
 		// E-mail config
-		$EmailTo = $email;
+//		$EmailTo = $email;
+		$EmailTo = "nevel_y@yahoo.no";
 		$Subject = "Nytt passord";
 		$Body = "Her er Ditt nye passord. Husk å endre passordet ditt ved neste pålogging.  \n\n" .$randompassword;
 		$Header = "From: ProCorr As admin <post@localhost.no>";
