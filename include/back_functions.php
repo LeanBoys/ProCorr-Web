@@ -216,11 +216,8 @@ if (isset($_POST['loggut']) and $_POST['loggut'] == "Logg ut") {
    session_destroy();
    header("Location: ../default.php");
 }
-?>
 
-
-<?php  //Bilder og Dokumenter
-
+//Bilder og Dokumenter
 //Lage thumbnails
 //Finne filtype
 function imageCreateFromAny($filepath) { 
@@ -541,11 +538,8 @@ if(isset($_POST["uploaddok"])) {
 		}
 	}
 }
-?>
 
-
-<?php //Hent elementer
-
+//Hent elementer
 //Meny/innhold emelmenter
 function updateall($file) {
 	ob_start();
@@ -715,11 +709,8 @@ while ($row = mysqli_fetch_array($contentquery)) {
 							</div>' ."\n";
 }
 mysqli_free_result($contentquery); 
-?>
 
-
-<?php //Rediger meny/innhold side
-
+//Rediger meny/innhold side
 // Legg til ny meny
 if (isset($_POST['leggtil'])) {
 	
@@ -731,8 +722,7 @@ if (isset($_POST['leggtil'])) {
 		
     $addsql = "INSERT INTO meny VALUES ('$hpo', 'Side $hpo', 'side$hpo.html', '$hpo', '', 'Gå til Side $hpo')";
 
-	$back_content = "
-<?php \$page = '$hpo'; ?>
+	$back_content = "<?php \$page = '$hpo'; ?>
 <?php \$page_title = \"ProCorr AS - Side $hpo\";?>
 <?php include(\"connection.php\");?>
 <?php include(\"back_functions.php\");?>
@@ -761,14 +751,14 @@ if (isset($_POST['leggtil'])) {
 							
 							<div id=\"popup\" class=\"hidden\">
 								<div class=\"popup-container\">
-									<?php echo \$visbilder; ?> 
+									<?php echo \$visbilder; ?>
 									<form method=\"POST\" class=\"nada\" action=\"back_side$hpo.php\">
 										<button id=\"closeit\" type=\"submit\" class=\"popup-close\">X</button>
 									</form>
 									<div class=\"return-whole\">
 										<p class=\"successMelding\"><?php echo (\$sMelding); ?></p> 
 										<p class=\"failMelding\"><?php echo (\$fMelding); ?></p> 
-										<?php echo \$uppic; ?> 
+										<?php echo \$uppic; ?>
 									</div> 
 								</div>
 							</div>
@@ -777,11 +767,9 @@ if (isset($_POST['leggtil'])) {
 					</div>
 				</div>
 
-<?php include(\"back_footer.php\");?>
-";
+<?php include(\"back_footer.php\");?>";
 
-	$content = "
-<?php \$page = '$hpo'; ?>
+	$content = "<?php \$page = '$hpo';?>
 <?php \$page_title = \"ProCorr AS - Side $hpo\";?>
 <?php include(\"connection.php\");?>
 <?php include(\"functions.php\");?>
@@ -798,8 +786,7 @@ if (isset($_POST['leggtil'])) {
 				</div>
 			</div>
 
-<?php include(\"footer.php\");?>
-";
+<?php include(\"footer.php\");?>";
 
 	if ($db->query($addsql) === TRUE) {
 		
@@ -1043,11 +1030,8 @@ if (isset($_POST['addinnhold'])) {
 	echo "Error: " . $addinnholdsql . "<br>" . $db->error;
 	}
 }
-?>
 
-
-<?php //Footer elementer
-
+//Footer elementer
 //Hente footer
 $contactsqlCommand = "SELECT * FROM kontakt WHERE kontaktnr=1";
 $contactquery = mysqli_query($db, $contactsqlCommand) or die (mysqli_error());
@@ -1114,11 +1098,8 @@ if (isset($_POST['footerslett']) and $_POST['footerslett'] == "Slett") {
     	echo "Error: " . $deletekontaktsql . "<br>" . $db->error;
 	}
 }
-?>
 
-
-<?php //Slide elementer
-
+//Slide elementer
 //Hent Slide
 $slidesqlCommand = "SELECT * FROM bilde WHERE bildenr IN(1,2,3) ORDER BY bildenr ASC"; 
 $slidequery = mysqli_query($db, $slidesqlCommand) or die (mysqli_error()); 
@@ -1272,11 +1253,8 @@ if (isset($_POST['slideslett'])) {
     	echo "Error: " . $deleteinnholdsql . "<br>" . $db->error;
 	}
 }
-?>
 
-
-<?php //Special elementer
-
+//Special elementer
 //Home innhold
 $homesqlCommand = "SELECT * FROM innhold WHERE menynr = '$page' AND type='main'";
 $homequery = mysqli_query($db, $homesqlCommand) or die (mysqli_error()); 
